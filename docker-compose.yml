@@ -18,7 +18,7 @@ services:
     image: postgres:14
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_PASSWORD: MYPASSWORD
       POSTGRES_DB: postgres
     ports:
       - 5432:5432
