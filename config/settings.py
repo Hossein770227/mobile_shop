@@ -80,16 +80,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'MYPASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432
-    }
+        'NAME': os.environ.get('DATABASE_NAME', 'mobile-shop'),  
+        'USER': os.environ.get('DATABASE_USER', 'root'),  
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'MYPASSWORD'), 
+        'HOST': os.environ.get('DATABASE_HOST', 'db'),  
+        'PORT': int(os.environ.get('DATABASE_PORT', 5432)),  
+}
 }
 
 
@@ -134,3 +133,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.MyUser'
