@@ -1,4 +1,3 @@
-
 import pytz
 import random
 
@@ -13,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from datetime import datetime, timedelta
 
-from .forms import UserRegisterForm, VerifyCodeForm
+from .forms import LoginForm, UserRegisterForm, VerifyCodeForm
 from utils import send_otp_code
 from .models import OtpCode, MyUser
 
@@ -80,12 +79,12 @@ class UserRegisterCodeView(View):
                 code_instance.delete() 
                 messages.success(request, _('You have successfully registered.'))
                 login(request, user)  
-                return redirect('website:welcome') 
+                return redirect('shop:product_list') 
             else:
                 messages.error(request, _('This code is incorrect.'))
                 return redirect('accounts:verify_code')  
         
-        return redirect('website:welcome') 
+        return redirect('shop:product_list') 
 
 
 def login_view(request):
@@ -102,7 +101,7 @@ def login_view(request):
                 if next_url:
                     return redirect(next_url)
                 else:
-                    return redirect('website:welcome')
+                    return redirect('shop:product_list')
             else:
                 form.add_error(None, _('phone number or password is incorrect'))
     else:
@@ -114,7 +113,7 @@ def logout_view(request):
     if request.method =='POST':
         logout(request)
         messages.error(request, _('you successfully logout'))
-        return redirect('website:welcome')
+        return redirect('shop:product_list')
 
 
 
