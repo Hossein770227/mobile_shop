@@ -18,7 +18,7 @@ class Category(models.Model):
 
 class Mobile(models.Model):
     name = models.CharField(_("name"), max_length=100)
-    Category = models.ForeignKey(Category, verbose_name=_("category"), on_delete=models.SET_NULL,related_name='products', blank=True, null=True )
+    category = models.ForeignKey(Category, verbose_name=_("category"), on_delete=models.SET_NULL,related_name='products', blank=True, null=True )
     short_description = models.TextField(_("short description"), max_length=250)
     description = models.TextField(_("description for mobile"))
     inventory = models.IntegerField(_("inventory"), validators=[MinValueValidator(1)])

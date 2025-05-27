@@ -37,7 +37,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(MyUser, UserAdmin)
-admin.site.unregister(Group)
+# admin.site.unregister(Group)
 
 @admin.register(OtpCode)
 class OtpCodeAdmin(admin.ModelAdmin):
