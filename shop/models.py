@@ -24,6 +24,7 @@ class Mobile(models.Model):
     inventory = models.IntegerField(_("inventory"), validators=[MinValueValidator(1)])
     price_main = models.PositiveIntegerField(_("price"))
     price_with_discount = models.PositiveIntegerField(_("price with discount"), blank=True, null=True)
+    image = models.ImageField(_("image"), upload_to='cover/',)
     is_active = models.BooleanField(_("active?"))
     date_time_added = models.DateTimeField(_("date time added"), auto_now_add=True)
 
