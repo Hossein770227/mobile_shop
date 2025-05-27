@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.contrib.messages import constants
 from environs import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -138,3 +139,7 @@ STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.MyUser'
+
+MESSAGE_TAGS={
+    constants.ERROR:"danger",
+}
